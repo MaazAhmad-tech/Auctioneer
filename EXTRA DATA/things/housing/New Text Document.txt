@@ -1,0 +1,9 @@
+name:- GingerBread House "Monstrad"
+
+age:- 15 months old
+
+price:- 145999
+
+info:- 2100 sq ft, 4-bhk, 3 bathrooms, attic and  with attached garage. Nice lawn area with great view and calm surroundings. No electronics or water problems.  
+
+bidder name:- Steve Roggers 

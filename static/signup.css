@@ -1,0 +1,18 @@
+body {
+	background-image: url("https://www.qgiv.com/blog/wp-content/uploads/2019/07/Bids.png") !important;
+}
+
+.container {
+	margin-top: 36px;
+	margin-bottom: 36px;
+	width: 480px;
+	padding: 18px;
+}
+.alert {
+	margin-top: 18px;
+}
+
+.btn {
+	font-weight: 600;
+	font-size: 20px;
+}

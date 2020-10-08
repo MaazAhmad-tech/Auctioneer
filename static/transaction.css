@@ -1,0 +1,19 @@
+table {
+	margin-bottom: 50px !important;
+}
+
+.alert {
+	margin-top: 50px;
+	margin-bottom: 0px;
+}
+
+body {
+	background-image: url("https://picsum.photos/1920/1080") !important;
+	background-size: contain !important;
+}
+
+#sold {
+	background-color: #495057 !important;
+	border-color: #495057;
+	color: white;
+}

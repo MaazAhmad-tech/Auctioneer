@@ -1,0 +1,9 @@
+name:- Play Station 5
+
+age:- 2 months old
+
+price:- 36500
+
+info:- 8-core 3.5 GHz AMD Zen 2 CPU, 10.3 teraflop AMD RDNA 2 GPU, 16 GB GDDR6 memory, 825 GB custom SSD. In good condition, no dents or scratches. 
+
+bidder name:- Rohit karmakar

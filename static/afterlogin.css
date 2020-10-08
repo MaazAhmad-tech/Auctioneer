@@ -1,0 +1,68 @@
+body {
+	background-image: url("https://static01.nyt.com/images/2017/05/17/pageoneplus/17-a2-insider/17-a2-insider-superJumbo.jpg") !important;
+	background-size: cover;
+}
+
+.alert {
+	color: white;
+	background-color: #868e96;
+	text-align: center;
+	border-color: #868e96;
+	margin-bottom: 0px;
+}
+
+.list-group-item-light {
+	font-size: large;
+	color: black;
+}
+
+.list-group-item-light:hover {
+	background-color: #ced4da !important;
+	color: black !important;
+}
+
+.list-group-item-secondary {
+	color: white !important;
+	font-weight: 600;
+	font-size: larger;
+}
+
+img {
+	object-fit: cover;
+}
+
+.page-link {
+	color: black;
+}
+
+.container-fluid {
+	background-color: #495057;
+	border-radius: 5px;
+	padding: 20px;
+	color: white;
+	opacity: 0.98;
+}
+
+.card,
+.card-body {
+	border: 2px solid white;
+}
+
+.card-body {
+	background-color: #868e96;
+	border-radius: 5px;
+}
+
+#pagegrid {
+	padding: 24px;
+	display: grid;
+	grid-template-columns: 320px auto;
+	grid-column-gap: 32px;
+}
+
+#cardgrid {
+	display: grid;
+	grid-column-gap: 24px;
+	grid-row-gap: 24px;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}

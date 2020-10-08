@@ -1,0 +1,125 @@
+body {
+	background: #495057;
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+	animation: slide 10s infinite;
+}
+
+h3 {
+	font-size: 35px;
+	color: white;
+}
+
+.container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 875px;
+}
+
+.container .card {
+	position: relative;
+	text-align: center;
+}
+
+.container .card .face {
+	width: 300px;
+	height: 200px;
+	transition: 0.5s;
+}
+
+.container .card .face.face1 {
+	position: relative;
+	background: rgb(50, 50, 55);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	transform: translateY(100px);
+}
+
+.container .card:hover .face.face1 {
+	background: rgb(150, 150, 160);
+	transform: translateY(0);
+}
+
+.container .card .face.face1 .content {
+	opacity: 0.9;
+	transition: 0.5s;
+}
+
+.container .card:hover .face.face1 .content {
+	opacity: 1;
+}
+
+.container .card:hover .face.face1 .content img {
+	max-width: 100px;
+}
+
+.container .card .face.face1 .content h4 {
+	margin: 10px 0 0;
+	padding: 0;
+	color: #fff !important;
+	text-align: center;
+}
+
+.container .card:hover .face.face1 .content h4 {
+	margin: 10px 0 0;
+	padding: 0;
+	color: #fff !important;
+	text-align: center;
+	font-size: 1.5em;
+	transition: 0.5s;
+}
+
+.container .card .face.face2 {
+	position: relative;
+	padding: 10px;
+	background: #fff !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	box-shadow: 0 20px 50px rgba(0, 0, 0, 0);
+	transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2 {
+	transform: translateY(0);
+}
+
+.container .card .face.face2 .content p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.container .card .face.face2 .content a {
+	/* margin: 20px auto; */
+	display: inline-block;
+	border-radius: 7px !important;
+	text-decoration: none;
+	text-align: center;
+	font-weight: 900;
+	color: #333;
+	padding: 5px;
+	border: 1px solid rgb(70, 70, 70);
+}
+
+.container .card .face.face2 .content a:hover {
+	background: grey;
+	color: #fff;
+	transition: 0.4s;
+}
+
+.card {
+	background: #495057;
+	border-color: #495057;
+}
+
+.container {
+	background-color: #495057;
+	color: #333;
+}

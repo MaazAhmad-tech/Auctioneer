@@ -1,0 +1,9 @@
+name:- GTX_1050ti Zotac
+
+age:- 9 months old
+
+price:- 8999
+
+info:- 640 Shader Processors, 640 CUDA Cores, 1518 MHz, 300 W, 128-bit, 2 GB GDDR5 Memory with 7008 MHz. 
+
+bidder name:- Neal Rivet

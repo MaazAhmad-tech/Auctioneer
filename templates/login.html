@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Login
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand mb-0 h1" id="brand" href="#">AUCTIONEER</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		<div class="navbar-nav ml-auto">
+			<a class="nav-item nav-link mx-2" href="/">Home</a>
+			<a class="nav-item nav-link mx-2 active" href="/login">Login</a>
+			<a class="nav-item nav-link mx-2" href="/signup">Register</a>
+			<a class="nav-item nav-link mx-2" href="/about">About Us</a>
+		</div>
+	</div>
+</nav>
+
+<form action="/login" method="POST" class="container">
+	<div id="head">
+		<h2>Log In</h2>
+		<h7>Log in using your Auctioneer account</h7>
+		{% if error != 0 %}
+		<div class="alert alert-danger" role=" alert">
+			{{ error }}
+		</div>
+		{% endif %}
+	</div>
+	<hr>
+	<div class="form-group">
+		<label for="email">Email Address</label>
+		<input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
+	</div>
+	<div class="form-group">
+		<label for="password">Password</label>
+		<input type="password" class="form-control" id="password" name="psw" placeholder="Enter Password" minlength="6"
+			required>
+	</div>
+	<button type="submit" class="btn btn-info btn-block">Log In</button>
+	<div class="alert alert-secondary" role=" alert">
+		Do not have an account ?
+		<a href="/signup" class="alert-link">Sign Up</a>
+	</div>
+</form>
+
+<link rel="stylesheet" href="{{ url_for ('static', filename = 'login.css') }}">
+
+{% endblock %}

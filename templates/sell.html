@@ -1,0 +1,77 @@
+{% extends "layout.html"%}
+
+{% block title %}
+Auctioneer: Sell
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="/user">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link mx-2" href="/user">Home</a>
+            <a class="nav-item nav-link mx-2 active" href="/sell">Sell</a>
+            <a class="nav-item nav-link mx-2" href="/transaction">Transactions</a>
+            <a class="nav-item nav-link mx-2" href="/profile">Profile</a>
+            <a class="nav-item nav-link mx-2" href="/logout">Logout</a>
+        </div>
+        <form class="form-inline my-0 my-lg-0 ml-auto" action="/user" method="POST">
+            <input class="form-control mr-sm-2" type="text" name="search" id="search" style="color: black !important;"
+                placeholder="Search...">
+            <button class="btn btn-secondary my-0 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+<form action="/sell" method="POST" class="container" enctype="multipart/form-data">
+    <div id="head">
+        <h2>Post Your AD</h2>
+        <h7>Provide the necessary details describing your product</h7>
+    </div>
+    <hr>
+    <div class="form-group">
+        <label for="pname">Product Name</label>
+        <input type="text" class="form-control" id="pname" name="product" placeholder="Product Name" required>
+        <small>Mention the key features of your item (e.g. brand, model, type)</small>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" required>
+            <option selected>Category...</option>
+            <option>Electronics & Appliances</option>
+            <option>Collectibles & Art</option>
+            <option>Musical Intstruments & Gears</option>
+            <option>Sporting Goods</option>
+            <option>Housing & Properties</option>
+            <option>Furnitures</option>
+            <option>Other Categories</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="price">List Price</label>
+        <input type="number" class="form-control" id="price" name="price" step="50" min="0" placeholder="List Price"
+            required>
+    </div>
+    <div class="form-group">
+        <label for="desc">Product Description</label>
+        <textarea class="form-control" id="desc" name="desc" placeholder="Description..." rows="4" required></textarea>
+        <small>Include condition, age, features and reason for selling</small>
+    </div>
+    <div class="form-group">
+        <label for="time">Duration</label>
+        <input type="datetime-local" class="form-control" id="time" name="time" required>
+    </div>
+    <div class="form-group">
+        <label for="photo">Upload Photos</label>
+        <input type="file" class="form-control" id="photo" name="photo" required multiple>
+    </div>
+    <button type="submit" class="btn btn-info btn-block" id="submit">List Now</button>
+</form>
+<link rel="stylesheet" href="{{ url_for('static',filename = 'sell.css') }}">
+
+{% endblock %}

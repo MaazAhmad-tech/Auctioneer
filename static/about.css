@@ -1,0 +1,55 @@
+* {
+	font-family: Verdana;
+}
+
+body {
+	background: #393e46;
+	font-family: Verdana;
+}
+
+h1.title {
+	position: absolute;
+	color: white;
+	margin-top: 5px;
+	margin-left: 250px;
+	font-size: 54px;
+}
+
+/*profile-card*/
+
+.profile-container .profile-card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	margin: auto;
+	text-align: center;
+	font-family: arial;
+}
+.title {
+	color: #ffffcc;
+	font-size: 18px;
+}
+
+.button1 {
+	border: 2px solid #ffffcc;
+	outline: 0;
+	display: inline-block;
+	padding: 0px;
+	color: #ffffcc;
+	background-color: #393e46;
+	text-align: center;
+	cursor: pointer;
+	font-size: 18px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+}
+
+.button1 :hover {
+	background-color: #393e46;
+	color: #ffffcc;
+	opacity: 0.7;
+}
+
+a {
+	text-decoration: none;
+	font-size: 22px;
+	color: black;
+}

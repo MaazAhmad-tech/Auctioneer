@@ -1,0 +1,18 @@
+body {
+	background-image: url("https://www.phpscriptsonline.com/wp-content/uploads/2018/12/penny-auction-bidding.png") !important;
+}
+
+.container {
+	margin-top: 36px;
+	margin-bottom: 36px;
+	width: 360px;
+}
+
+.alert {
+	margin-top: 18px;
+}
+
+.btn {
+	font-weight: 600;
+	font-size: 20px;
+}

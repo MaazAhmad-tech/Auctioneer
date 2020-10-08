@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Item
+{% endblock %}
+
+{% block body %}
+
+<script>
+
+    let img = document.querySelector('img');
+    let btn1 = document.querySelector('#btn1');
+    let btn2 = document.querySelector('#btn2');
+    let btn3 = document.querySelector('#btn3');
+
+    btn1.addEventListener('click', () => {
+        img.src = '1.jpg';
+    })
+    btn2.addEventListener('click', () => {
+        img.src = '2.jpg';
+    })
+    btn3.addEventListener('click', () => {
+        img.src = '3.jpg';
+    })
+
+    var countDate = new Date('Oct 1, 2020 00:00:00').getTime();
+
+    function counting() {
+        var now = new Date().getTime();
+        gap = countDate - now;
+
+        var second = 1000;
+        var minute = second * 60;
+        var hour = minute * 60;
+        var day = hour * 24;
+
+        var d = Math.floor(gap / (day));
+        var h = Math.floor((gap % (day)) / (hour));
+        var m = Math.floor((gap % (hour)) / (minute));
+        var s = Math.floor((gap % (minute)) / (second));
+
+        document.getElementById('day').innerText = d;
+        document.getElementById('hour').innerText = h;
+        document.getElementById('minute').innerText = m;
+        document.getElementById('second').innerText = s;
+    }
+
+    setInterval(function () { counting(); }, 1000)
+
+</script>
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="/user">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link mx-2 active" href="/user">Home</a>
+            <a class="nav-item nav-link mx-2" href="/sell">Sell</a>
+            <a class="nav-item nav-link mx-2" href="/transaction">Transactions</a>
+            <a class="nav-item nav-link mx-2" href="/profile">Profile</a>
+            <a class="nav-item nav-link mx-2" href="/logout">Logout</a>
+        </div>
+        <form class="form-inline my-0 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search...">
+            <button class="btn btn-secondary my-0 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="prodname">
+    <label>Name Of The Item </label>
+</div>
+
+<div class="prodimg">
+    <img class="image" src="1.jpg" alt="">
+
+    <div class="but">
+
+        <button id="btn1">1</button>
+        <button id="btn3">2</button>
+        <button id="btn2">3</button>
+
+    </div>
+</div>
+
+<div class="price">
+    <div class="inputfield">
+        <label>current bid </label>
+        <input type="text" class="input" value="PUT THE PRICE HERE" readonly>
+    </div>
+    <div class="inputfield">
+        <label>your bid </label>
+        <input type="text" class="input" placeholder="YOUR BID">
+    </div>
+
+    <div class="inputfield">
+        <input type="submit" value="PLACE BID" class="btn">
+    </div>
+</div>
+
+<div class="container">
+
+    <h2><span>the auction last </span>till</h2>
+    <div class="countdown">
+        <div id="day">na</div>
+        <div id="hour">na</div>
+        <div id="minute">na</div>
+        <div id="second">na</div>
+    </div>
+</div>
+
+<div class="info">
+    <label>INFO </label>
+    <div class="about">
+        In a novel punishment for writing an essay mocking modern social relationships, Hachiman's teacher
+        forces him to join the Volunteer Service Club, a club that aims to extend a helping hand to any student
+        who seeks their support in achieving their goals. With the only other club member being the beautiful
+        ice queen Yukino Yukinoshita, Hachiman finds himself on the front line of other people's problems—a
+        place he never dreamed he would be. As Hachiman and Yukino use their wits to solve many students'
+        problems, will Hachiman's rotten view of society prove to be a hindrance or a tool he can use to his
+        advantage?
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='itemdesc.css') }}">
+{% endblock %}

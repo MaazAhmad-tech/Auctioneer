@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Item
+{% endblock %}
+
+{% block body %}
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="/user">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link mx-2 active" href="/user">Home</a>
+            <a class="nav-item nav-link mx-2" href="/sell">Sell</a>
+            <a class="nav-item nav-link mx-2" href="/transaction">Transactions</a>
+            <a class="nav-item nav-link mx-2" href="/profile">Profile</a>
+            <a class="nav-item nav-link mx-2" href="/logout">Logout</a>
+        </div>
+        <form class="form-inline my-0 my-lg-0 ml-auto" action="/user" method="POST">
+            <input class="form-control mr-sm-2" type="text" name="search" id="search" style="color: black !important;"
+                placeholder="Search...">
+            <button class="btn btn-secondary my-0 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="alert alert-warning h3" role="alert">
+    {{ item[0]['item_name'] }}
+</div>
+<div id="pagegrid">
+    <div class="card">
+        <img src="{{ url_for('static', filename='photos') }}/{{item[0]['imagesrc']}}" style="padding: 5px;"
+            class="card-img-top" height="230" alt="...">
+        <div class="card-body">
+            <p class="card-text">{{ item[0]['item_desc'] }}</p>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <form action="/user/{{ item[0]['id'] }}" method="POST">
+            <div class="form-group row">
+                <label for="itemname" class="col-sm-2 col-form-label">Item Name</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                        value="{{ item[0]['item_name'] }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                        value="{{ item[0]['Category'] }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Last Bidder</label>
+                {% if bidder != -1 %}
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                        value="{{ bidder[0]['fname'] }} {{ bidder[0]['lname'] }}">
+                </div>
+                {% else %}
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="N/A">
+                </div>
+                {% endif %}
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Seller</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                        value="{{ seller[0]['fname'] }} {{ seller[0]['lname'] }}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Current Bid</label>
+                <div class="col-sm-10">
+                    <input type="text" readonly class="form-control-plaintext" id="staticEmail"
+                        value="&#8377; {{ item[0]['price'] }}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-7">
+                    <input type="number" class="form-control" id="currbid" name="currbid" min="{{ item[0]['price'] }}"
+                        placeholder="Place Your Bid">
+                </div>
+                <div class="form-group col-sm-5">
+                    <button type="submit" class="btn btn-info btn-block" id="submit">Submit Bid</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="rounded bg-gradient-4 text-white shadow pt-5 text-center" style="opacity: 0.85;">
+        <p class="mb-4 font-weight-normal text-uppercase h4">Time Remaining</p>
+        <div id="clock" class="countdown h2 pt-5"></div>
+    </div>
+</div>
+
+<p id="demo"></p>
+<script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("{{ item[0]['expiry'] }}").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("clock").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+
+        // If the count down is over, write some text 
+        if (distance < 0) {
+
+            clearInterval(x);
+            document.getElementById("submit").disabled = true;
+            document.getElementById("clock").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='itemdesc.css') }}">
+{% endblock %}

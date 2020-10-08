@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Transactions
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="/user">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link mx-2" href="/user">Home</a>
+            <a class="nav-item nav-link mx-2" href="/sell">Sell</a>
+            <a class="nav-item nav-link mx-2 active" href="/transaction">Transactions</a>
+            <a class="nav-item nav-link mx-2" href="/profile">Profile</a>
+            <a class="nav-item nav-link mx-2" href="/logout">Logout</a>
+        </div>
+        <form class="form-inline my-0 my-lg-0 ml-auto" action="/user" method="POST">
+            <input class="form-control mr-sm-2" type="text" name="search" id="search" style="color: black !important;"
+                placeholder="Search...">
+            <button class="btn btn-secondary my-0 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="alert alert-secondary h5 text-center" role="alert">
+    Active Bids
+</div>
+
+<table class="table table-striped table-light">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Seller Id</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for buy in bought %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ buy['item_name'] }}</td>
+            <td>{{ buy['category'] }}</td>
+            <td>{{ buy['price'] }}</td>
+            <td>{{ buy['user'] }}</td>
+            <td>{{ buy['expiry'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div id="sold" class="alert alert-dark h5 text-center" role="alert">
+    Active Listings
+</div>
+
+<table class="table table-striped table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Item Name</th>
+            <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Bidder Id</th>
+            <th scope="col">Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sell in sold %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ sell['item_name'] }}</td>
+            <td>{{ sell['category'] }}</td>
+            <td>{{ sell['price'] }}</td>
+            <td>{{ sell['curr_bidder'] }}</td>
+            <td>{{ sell['expiry'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='transaction.css') }}">
+{% endblock %}

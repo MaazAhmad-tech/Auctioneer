@@ -1,0 +1,9 @@
+name:- Nintendo Switch
+
+age:- 4 months old
+
+price:- 37990
+
+info:- NVIDIA Custom Tegra processor,32 GB of internal storage,Accelerometer, gyroscope, and brightness sensor. In prime condition, no scratches or marks. 
+
+bidder name:- Jean gray

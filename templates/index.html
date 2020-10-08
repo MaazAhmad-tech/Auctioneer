@@ -1,0 +1,169 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="#">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link mx-2 active" href="/">Home</a>
+            <a class="nav-item nav-link mx-2" href="/login">Login</a>
+            <a class="nav-item nav-link mx-2" href="/signup">Register</a>
+            <a class="nav-item nav-link mx-2" href="/about">About Us</a>
+        </div>
+    </div>
+</nav>
+<style>
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .hero-image {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://picsum.photos/1920/1080");
+        height: 720px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+    }
+
+    .hero-text button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 10px 25px;
+        color: black;
+        background-color: #ddd;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .hero-text button:hover {
+        background-color: #555;
+        color: white;
+
+    }
+
+    .white-section {
+        background-color: #495057;
+    }
+
+    #features {
+        position: relative;
+    }
+
+    .feature-title {
+        font-size: 1.5rem;
+    }
+
+    .feature-box {
+        text-align: center;
+        padding: 2.5%;
+    }
+
+    .icon {
+        color: #ffffcc;
+        margin-bottom: 1rem;
+    }
+
+    .icon:hover {
+        color: #ffffcc;
+    }
+
+    .container-fluid {
+        padding-top: 5%;
+    }
+</style>
+<div class="hero-image">
+    <div class="hero-text">
+        <h1 style="font-size:80px; font-family:Georgia, 'Times New Roman', Times, serif;">AUCTIONEER</h1>
+        <p>This is an online auction site in which users or participants sell or bid for products or services via
+            the Internet. Virtual auctions facilitate online activities between buyers and sellers in different
+            locations or geographical areas</p>
+    </div>
+</div>
+
+<section class="white-section" id="features">
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-check-circle fa-4x"></i>
+                <h3 class="feature-title" style="color: #ffffcc">Easy to use.</h3>
+                <p style="color: #ffffcc">Simple easy and Interactive Interface.</p>
+            </div>
+
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-user fa-4x"></i>
+                <h3 class="feature-title" style="color: #ffffcc">Elite Clientele</h3>
+                <p style="color: #ffffcc">All clients are registered and verified.</p>
+            </div>
+
+            <div class="feature-box col-lg-4">
+                <i class="icon fas fa-heart fa-4x"></i>
+                <h3 class="feature-title" style="color: #ffffcc">Good Products.</h3>
+                <p style="color: #ffffcc">You'll love the Products here.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<div class="container align-content-center">
+    <div class="card">
+        <div class="face face1">
+            <div class="content">
+                <img src="{{ url_for ( 'static', filename='login.png' ) }} " />
+                <h4 class="text-white">LogIn</h4>
+            </div>
+        </div>
+        <div class="face face2">
+            <div class="content">
+                <p>Log in to your account</p>
+                <a href="/login">Log In</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="face face1">
+            <div class="content">
+                <img src="{{ url_for ( 'static', filename='signup.png' ) }} " />
+                <h4>Sign Up</h4>
+            </div>
+        </div>
+        <div class="face face2">
+            <div class="content">
+                <p>
+                    Sign up to and enjoy the various features that come with it and its totally FREE
+                </p>
+                <a href="/signup">Sign Up</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for ('static', filename = 'index.css') }}">
+
+{% endblock %}

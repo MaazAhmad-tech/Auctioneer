@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Home
+{% endblock %}
+
+{% block body %}
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="/user">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link mx-2 active" href="/user">Home</a>
+            <a class="nav-item nav-link mx-2" href="/sell">Sell</a>
+            <a class="nav-item nav-link mx-2" href="/transaction">Transactions</a>
+            <a class="nav-item nav-link mx-2" href="/profile">Profile</a>
+            <a class="nav-item nav-link mx-2" href="/logout">Logout</a>
+        </div>
+        <form class="form-inline my-0 my-lg-0 ml-auto" action="/user" method="POST">
+            <input class="form-control mr-sm-2" type="text" name="search" id="search" placeholder="Search...">
+            <button class="btn btn-secondary my-0 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<div class="alert alert-secondary h3" role="alert">
+    Welcome, {{ name }}
+</div>
+
+<div id="pagegrid">
+    <div class="list-group">
+        <a class="list-group-item list-group-item-action list-group-item-secondary active">Categories</a>
+        <a href="/user/Electronics & Appliances"
+            class="list-group-item list-group-item-action list-group-item-light">Electronics
+            & Appliances</a>
+        <a href="/user/Collectibles & Art"
+            class="list-group-item list-group-item-action list-group-item-light">Collectibles
+            & Art</a>
+        <a href="/user/Musical Intstruments & Gears"
+            class="list-group-item list-group-item-action list-group-item-light">Musical
+            Intstruments & Gears</a>
+        <a href="/user/Sporting Goods" class="list-group-item list-group-item-action list-group-item-light">Sporting
+            Goods</a>
+        <a href="/user/Housing & Properties"
+            class="list-group-item list-group-item-action list-group-item-light">Housing &
+            Properties</a>
+        <a href="/user/Furnitures" class="list-group-item list-group-item-action list-group-item-light">Furnitures</a>
+        <a href="/user/Other Categories" class="list-group-item list-group-item-action list-group-item-light">Other
+            Categories</a>
+        <a href="/user" class="list-group-item list-group-item-action list-group-item-light">All
+            Products</a>
+    </div>
+
+    <div class="container-fluid">
+
+        <div id="cardgrid">
+
+            {% for item in items %}
+
+            <div class="card">
+                <img src="{{ url_for('static', filename='photos') }}/{{item['imagesrc']}}" class="card-img-top"
+                    height="240" style="padding: 5px;" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ item['item_name'] }}</h5>
+                    <p class="card-text">Current Bid: &#8377; {{ item['price'] }}</p>
+                    <a href="/user/{{ item['id'] }}" class="btn btn-secondary">View Item</a>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='afterlogin.css') }}">
+
+{% endblock %}

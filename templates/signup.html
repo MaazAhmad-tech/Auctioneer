@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Auctioneer: Sign Up
+{% endblock %}
+
+{% block body %}
+
+<script>
+    function checkpsw() {
+        let psw = document.getElementById("psw").value;
+        let pswr = document.getElementById("pswr").value;
+        if (psw === pswr) {
+            return true;
+        } else {
+            document.getElementById("psw").value = "";
+            document.getElementById("pswr").value = "";
+            document.getElementById('head').innerHTML += '<div class="alert alert-danger" role="alert"> Passwords did not match </div>';
+            return false;
+        }
+    }
+</script>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand mb-0 h1" id="brand" href="#">AUCTIONEER</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link mx-2" href="/">Home</a>
+            <a class="nav-item nav-link mx-2" href="/login">Login</a>
+            <a class="nav-item nav-link mx-2 active" href="/signup">Register</a>
+            <a class="nav-item nav-link mx-2" href="/about">About Us</a>
+        </div>
+    </div>
+</nav>
+<form onsubmit="return checkpsw();" action="/signup" method="POST" class="container">
+    <div id="head">
+        <h2>Sign Up</h2>
+        <h7>Create your Free Auctioneer account</h7>
+        {% if error != 0 %}
+        <div class="alert alert-danger" role=" alert">
+            {{ error }}
+        </div>
+        {% endif %}
+    </div>
+    <hr>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="first-name" placeholder="First Name" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="last-name" placeholder="Last Name">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label for="email">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="gender">Gender</label>
+            <select id="gender" class="form-control" name="gender" required>
+                <option selected>Choose...</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="psw">Password</label>
+            <input type="password" class="form-control" id="psw" name="psw" placeholder="Enter Password" required
+                minlength="6">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="pswr">Confirm Password</label>
+            <input type="password" class="form-control" id="pswr" name="pswr" placeholder="Confirm Password" required
+                minlength="6">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success btn-block">Create My Account</button>
+    <div class="alert alert-secondary" role=" alert">
+        Already have an account ?
+        <a href="/login" class="alert-link">Log In</a>
+    </div>
+</form>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+
+{% endblock %}
